@@ -49,7 +49,7 @@ alias lrt='ls -1Fcrt'
 
 alias zshrc='vim ~/.zshrc'
 alias vimrc='vim ~/.vimrc'
-alias i3config='vim ~/.i3/config'
+alias i3config='vim ~/.config/i3/config'
 alias tmuxconf='vim ~/.tmux.conf'
 
 alias pls=please
