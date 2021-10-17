@@ -16,6 +16,8 @@ set $mod Mod4
 font pango:Ubuntu 10
 
 hide_edge_borders both
+# Remove i3-frame aka title border
+for_window [class="^.*"] border pixel 2
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -33,7 +35,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Set keyboard layout
-exec setxkbmap -layout us -variant intl
+exec setxkbmap -layout us -variant intl -options caps:escape
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -112,7 +114,7 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -138,7 +140,12 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+assign [class="kitty"] $ws1
 assign [class="Firefox"] $ws2
+assign [class="Emacs"] $ws3
+assign [class="discord"] $ws5
+assign [class="Spotify"] $ws9
+assign [class="Steam"] $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -212,6 +219,7 @@ bindsym XF86TouchpadToggle exec /home/swo/.config/i3/toggletouchpad.sh # toggle 
 
 # Screen lock
 bindsym $mod+shift+period exec /home/swo/.config/i3/lock -i /home/swo/Pictures/Wallpapers/cyberpunk-girl.png
+bindsym $mod+shift+Escape exec systemctl suspend
 
 # Background Image
 exec_always feh --bg-scale /home/swo/Pictures/Wallpapers/cyberpunk-girl.png
