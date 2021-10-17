@@ -51,6 +51,7 @@ alias zshrc='vim ~/.zshrc'
 alias vimrc='vim ~/.vimrc'
 alias i3config='vim ~/.config/i3/config'
 alias tmuxconf='vim ~/.tmux.conf'
+alias kittyconf='vim ~/.config/kitty/kitty.conf'
 
 alias pls=please
 alias please='sudo $(fc -ln -1)'
