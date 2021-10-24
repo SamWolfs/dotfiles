@@ -56,6 +56,5 @@ alias kittyconf='vim ~/.config/kitty/kitty.conf'
 alias pls=please
 alias please='sudo $(fc -ln -1)'
 
-setxkbmap -layout us -variant intl
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
