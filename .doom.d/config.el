@@ -26,6 +26,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-gruvbox)
+(setq doom-unicode-font (font-spec :family "MesloLGS NF"))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -39,7 +40,6 @@
 (setq projectile-project-search-path '(("~/dev/workspaces/" . 2)))
 
 (require 'asdf)
-
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -56,7 +56,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
- (use-package lsp-mode
+(use-package lsp-mode
     :commands lsp
     :ensure t
     :diminish lsp-mode
@@ -66,3 +66,5 @@
     (add-to-list 'exec-path "/home/swo/dev/ls/elixir-ls"))
 
 (map! :map general-override-mode-map :nv "s" #'evil-substitute)
+
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
