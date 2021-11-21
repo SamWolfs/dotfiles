@@ -8,7 +8,7 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="/home/swo/.oh-my-zsh"
 export DOOM="/home/swo/.emacs.d/bin"
-export PATH=$DOOM:$PATH
+export PATH=~/.local/bin/:$DOOM:$PATH
 
 ZSH_THEME="gruvbox"
 ZSH_TMUX_AUTOSTART="true"
