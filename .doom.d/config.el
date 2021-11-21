@@ -65,6 +65,23 @@
     :init
     (add-to-list 'exec-path "/home/swo/dev/ls/elixir-ls"))
 
+(add-hook 'org-present-mode-hook (lambda ()
+                        (setq-local face-remapping-alist '((default (:height 1.5) variable-pitch)
+                                (header-line (:height 4.5) variable-pitch)
+                                (org-document-title (:height 1.75) org-document-title)
+                                (org-code (:height 1.55) org-code)
+                                (org-verbatim (:height 1.55) org-verbatim)
+                                (org-block (:height 1.25) org-block)
+                                (org-block-begin-line (:height 0.7) org-block)))
+                        (setq header-line-format " ")
+                        (org-display-inline-images)))
+
+(add-hook 'org-present-mode-quit-hook (lambda ()
+                                        (setq-local face-remapping-alist '((default variable-pitch default)))
+                                        (setq header-line-format nil)
+                                        (org-present-small)
+                                        (org-remove-inline-images)))
+
 (map! :map general-override-mode-map :nv "s" #'evil-substitute)
 
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
