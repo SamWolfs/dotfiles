@@ -219,21 +219,21 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Touchpad controls
-bindsym XF86TouchpadToggle exec /home/swo/.config/i3/toggletouchpad.sh # toggle touchpad
+bindsym XF86TouchpadToggle exec /home/sam/.config/i3/toggletouchpad.sh # toggle touchpad
 
 # Screen lock
-bindsym $mod+shift+period exec /home/swo/.config/i3/lock -i /home/swo/Pictures/Wallpapers/cyberpunk-girl.png
+bindsym $mod+shift+period exec /home/sam/.config/i3/lock -i /home/sam/Pictures/wallpapers/solar-system.jpg
 bindsym $mod+shift+Escape exec systemctl suspend
 
 # Background Image
-exec_always feh --bg-scale /home/swo/Pictures/Wallpapers/cyberpunk-girl.png
+exec_always feh --bg-scale /home/sam/Pictures/wallpapers/solar-system.jpg
 
 # Menu launcher
 bindsym $mod+d exec rofi -show run 
+bindsym $mod+g exec rofi -modi "Repositories:$HOME/.local/bin/rofi-github repositories#Workflows:$HOME/.local/bin/rofi-github workflows" -show Repositories
 
 # Transparency
 exec_always --no-startup-id picom 
 
 # Set keyboard layout
-exec_always setxkbmap -layout us -variant intl -option caps:escape
-
+exec_always setxkbmap -layout us -option caps:escape

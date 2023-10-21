@@ -4,17 +4,24 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+export GUIX_LOCPATH=$HOME/.guix-profile/lib/locale
 # Path to your oh-my-zsh installation.
-export ZSH="/home/swo/.oh-my-zsh"
-export DOOM="/home/swo/.emacs.d/bin"
-export PATH=~/.local/bin/:$DOOM:$PATH
+export LOCAL="$HOME/.local/bin"
+export ZSH="$HOME/.oh-my-zsh"
+export DOOM="$HOME/.emacs.d/bin"
+export GOPATH="$HOME/.asdf/installs/golang/1.19/packages"
+export EDITOR="emacs"
+
+export PATH=$LOCAL/android-studio/bin:$GOPATH/bin:$LOCAL:$DOOM:$PATH
+
+export GCM_CREDENTIAL_STORE="gpg"
+
+export GUIX_PROFILE="$HOME/.guix-profile"
+. "$GUIX_PROFILE/etc/profile"
 
 ZSH_THEME="gruvbox"
-ZSH_TMUX_AUTOSTART="true"
-ZSH_TMUX_AUTOQUIT="true"
 
-plugins=(asdf git tmux history fzf)
+plugins=(asdf git history fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -33,7 +40,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-
 alias shutdown='sudo shutdown now'
 alias restart='sudo restart now'
 
@@ -50,7 +56,6 @@ alias lrt='ls -1Fcrt'
 alias zshrc='vim ~/.zshrc'
 alias vimrc='vim ~/.vimrc'
 alias i3config='vim ~/.config/i3/config'
-alias tmuxconf='vim ~/.tmux.conf'
 alias kittyconf='vim ~/.config/kitty/kitty.conf'
 
 alias pls=please

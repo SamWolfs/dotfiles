@@ -4,7 +4,7 @@
       user-mail-address "be.samwolfs@gmail.com")
 
 (setq doom-theme 'doom-gruvbox)
-(setq doom-unicode-font (font-spec :family "MesloLGS NF"))
+(setq doom-unicode-font (font-spec :family "JetBrainsMono Nerd Font Mono"))
 
 (setq org-directory "~/dev/org/")
 
@@ -39,7 +39,9 @@
     :hook
     (elixir-mode . lsp)
     :init
-    (add-to-list 'exec-path "/home/swo/dev/ls/elixir-ls"))
+    (add-to-list 'exec-path "/home/swo/dev/tools/elixir-ls"))
+
+(setenv "GCM_CREDENTIAL_STORE" "gpg")
 
 (add-hook 'org-present-mode-hook (lambda ()
                         (setq-local face-remapping-alist '((default (:height 1.5) variable-pitch)
@@ -60,3 +62,6 @@
 
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 
+(map! :after rust
+      :map rust-mode-map
+      "SPC m f" #'rustic-format-buffer)
