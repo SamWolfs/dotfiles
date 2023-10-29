@@ -1,0 +1,8 @@
+{
+    "describe": "kubectl describe pod $POD",
+    "iex": "SERVICE=$(kubectl get pods $POD -o yaml | yq -e '.metadata .labels app' | sed --expression='s/-/_/g'); kubectl exec -it $POD -- $SERVICE/bin/$SERVICE remote",
+    "logs": "kubectl logs -f --tail=10 $POD",
+    "logs-w-msg": "kubectl logs -f --tail=10 $POD | jq '.msg'",
+    "metrics": "kubectl exec $POD -- wget -qO - 127.0.0.1:9568/metrics",
+    "terminal" "kubectl exec -it $POD -- bash"
+}
