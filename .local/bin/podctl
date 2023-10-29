@@ -1,4 +1,5 @@
 #!/bin/zsh
+# Run as '. podctl' to load environment variables in current shell
 
 declare -a dependencies=("awk" "fzf" "jq" "kubectl")
 
