@@ -11,6 +11,11 @@
 (package! protobuf-mode)
 (package! typescript-mode)
 (package! ob-typescript)
+(package! jsonnet-mode)
+
+(package! ob-jsonnet
+  :recipe (:local-repo "/home/sam/dev/workspaces/tooling/ob-jsonnet"
+  :build (:not compile)))
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)

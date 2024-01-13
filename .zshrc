@@ -9,7 +9,7 @@ export GUIX_LOCPATH=$HOME/.guix-profile/lib/locale
 export LOCAL="$HOME/.local/bin"
 export ZSH="$HOME/.oh-my-zsh"
 export DOOM="$HOME/.emacs.d/bin"
-export GOPATH="$HOME/.asdf/installs/golang/1.19/packages"
+export GOPATH="$HOME/.asdf/installs/golang/1.21/packages"
 export EDITOR="emacs"
 
 export PATH=$LOCAL/android-studio/bin:$GOPATH/bin:$LOCAL:$DOOM:$PATH
