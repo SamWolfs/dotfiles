@@ -9,6 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -202,7 +203,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 bar {
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
         strip_workspace_numbers yes
-        font pango:Font Awesome 5 Brands Regular, Font Awesome 5 Free Regular, Font Awesome 5 Free Solid, Ubuntu:style=Regular 10
+        font pango:JetBrainsMono Nerd Font Mono, Ubuntu:style=Regular 10
 	colors {
 		background $bg-color
 	    	separator #757575
@@ -222,11 +223,11 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 bindsym XF86TouchpadToggle exec /home/sam/.config/i3/toggletouchpad.sh # toggle touchpad
 
 # Screen lock
-bindsym $mod+shift+period exec /home/sam/.config/i3/lock -i /home/sam/Pictures/wallpapers/solar-system.jpg
+bindsym $mod+shift+period exec /home/sam/.config/i3/lock -i /home/besam/Pictures/wallpapers/solar-system.jpg
 bindsym $mod+shift+Escape exec systemctl suspend
 
 # Background Image
-exec_always feh --bg-scale /home/sam/Pictures/wallpapers/solar-system.jpg
+exec_always feh --bg-scale /home/besam/Pictures/blue-eye-samurai.jpg
 
 # Menu launcher
 bindsym $mod+d exec rofi -show run 

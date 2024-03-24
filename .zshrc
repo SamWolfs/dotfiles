@@ -5,19 +5,22 @@ fi
 # Path to your oh-my-zsh installation.
 export LOCAL="$HOME/.local/bin"
 export ZSH="$HOME/.oh-my-zsh"
-export DOOM="$HOME/.emacs.d/bin"
+export DOOM="$HOME/.config/emacs/bin"
 export EDITOR="emacs"
+export GOPATH="$HOME/go"
 
-export PATH=$LOCAL/android-studio/bin:$GOPATH/bin:$LOCAL:$DOOM:$PATH
+export PATH="$HOME/.mix/escripts:$GOPATH/bin:$LOCAL:$DOOM:$PATH"
 
 export GCM_CREDENTIAL_STORE="gpg"
 
 # zsh
-#ZSH_THEME="gruvbox"
-#plugins=(git history fzf)
-#source $ZSH/oh-my-zsh.sh
+ZSH_THEME="gruvbox"
+plugins=(git history fzf)
+source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
+
+alias k="kubectl"
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
@@ -38,10 +41,7 @@ alias lS='ls -1FSsh'
 alias lart='ls -1Fcart'
 alias lrt='ls -1Fcrt'
 
-alias zshrc='vim ~/.zshrc'
-alias vimrc='vim ~/.vimrc'
-alias i3config='vim ~/.config/i3/config'
-alias kittyconf='vim ~/.config/kitty/kitty.conf'
+alias update-profile="home-manager switch --flake $HOME/nix#$USER";
 
 alias pls=please
 alias please='sudo $(fc -ln -1)'
