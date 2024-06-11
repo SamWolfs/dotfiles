@@ -41,7 +41,7 @@
     rofi
     tmux
     tree
-    kitty
+    xst
     picom
     pavucontrol
 
@@ -55,6 +55,7 @@
     gimp
     spotify
     vlc
+    wakatime
     xclip
 
     # Kubernetes
@@ -66,6 +67,7 @@
     kubectl
     kubelogin
     kubernetes-helm
+    talosctl
     tilt
 
     # Languages
@@ -76,6 +78,10 @@
     luajit
     nodejs
     go_1_21
+
+    # Language Tools
+    hugo
+    revive
   ];
 
   # basic configuration of git, please change to your own
@@ -84,22 +90,6 @@
     userName = "Sam Wolfs";
     userEmail = "be.samwolfs@gmail.com";
   };
-
-
-
-  # programs.zsh = {
-  #   enable = true;
-  #   enableAutosuggestions = true;
-  #   enableCompletion = true;
-  #   shellAliases = {
-  #     update-profile = "home-manager switch --flake $HOME/nix#$USER";
-  #   };
-  #   oh-my-zsh = {
-  #     enable = true;
-  #     plugins = [ "git" "history" "fzf" ];
-  #     theme = "robbyrussell";
-  #   };
-  # };
 
   fonts.fontconfig.enable = true;
 

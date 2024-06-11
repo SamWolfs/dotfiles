@@ -13,6 +13,7 @@
 (package! typescript-mode)
 (package! ob-typescript)
 (package! jsonnet-mode)
+(package! wakatime-mode)
 
 ;;(package! ob-jsonnet
 ;;  :recipe (:local-repo "/home/sam/dev/workspaces/tooling/ob-jsonnet"

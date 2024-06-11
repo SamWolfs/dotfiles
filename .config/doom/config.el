@@ -41,7 +41,7 @@
     :hook
     (elixir-mode . lsp)
     :init
-    (add-to-list 'exec-path "/home/swo/dev/tools/elixir-ls"))
+    (add-to-list 'exec-path "~/dev/tools/elixir-ls"))
 
 (setenv "GCM_CREDENTIAL_STORE" "gpg")
 
@@ -69,8 +69,16 @@
       :localleader
       "f" #'elixir-format)
 
+(map! :after go-mode
+      :localleader
+      :map go-mode-map
+      "f" #'gofmt)
+
 (map! :after rust
+      :localleader
       :map rust-mode-map
       "SPC m f" #'rustic-format-buffer)
 
-(setq shell-file-name "/home/besam/.nix-profile/bin/zsh")
+(setq shell-file-name "~/.nix-profile/bin/zsh")
+
+(load-file "~/.config/doom/secret.el")

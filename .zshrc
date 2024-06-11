@@ -8,8 +8,9 @@ export ZSH="$HOME/.oh-my-zsh"
 export DOOM="$HOME/.config/emacs/bin"
 export EDITOR="emacs"
 export GOPATH="$HOME/go"
+export NPM_BIN="$HOME/.npm-packages/bin"
 
-export PATH="$HOME/.mix/escripts:$GOPATH/bin:$LOCAL:$DOOM:$PATH"
+export PATH="$NPM_BIN:$HOME/.mix/escripts:$GOPATH/bin:$LOCAL:$DOOM:$PATH"
 
 export GCM_CREDENTIAL_STORE="gpg"
 
