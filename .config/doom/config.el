@@ -7,13 +7,16 @@
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono"))
 
 (setq org-directory "~/dev/org/")
+(setq org-roam-dailies-directory "journal/")
+
+(setq org-roam-dailies-capture-template
+      '(("d" "default" entry "* %<%k:%M:%S %z>: %?"
+         :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
 
 (setq display-line-numbers-type 'relative
       scroll-margin 8)
 
 (setq projectile-project-search-path '(("~/dev/workspaces/" . 2)))
-
-(setq copilot-bin "wizardcoder-python-13b.llamafile")
 
 (require 'asdf)
 
@@ -80,5 +83,13 @@
       "SPC m f" #'rustic-format-buffer)
 
 (setq shell-file-name "~/.nix-profile/bin/zsh")
+
+(setq evil-want-Y-yank-to-eol t)
+;; same ciw functionality as vim
+(defadvice evil-inner-word (around underscore-as-word activate)
+  (let ((table (copy-syntax-table (syntax-table))))
+    (modify-syntax-entry ?_ "w" table)
+    (with-syntax-table table
+      ad-do-it)))
 
 (load-file "~/.config/doom/secret.el")

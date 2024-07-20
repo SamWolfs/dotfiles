@@ -29,6 +29,7 @@
 
     # Core
     # emacs
+    android-studio
     fd
     fzf
     gh
@@ -36,6 +37,7 @@
     gnumake
     jq
     neovim
+    pass
     protobuf
     ripgrep
     rofi
@@ -72,16 +74,25 @@
 
     # Languages
     beam.packages.erlangR26.elixir_1_15
-    nixfmt
-    rebar3
-    rustup
-    luajit
-    nodejs
+    flutter
     go_1_21
+    luajit
+    nixfmt
+    nodejs
+    (python3.withPackages (python-pkgs: [
+      python-pkgs.python-dotenv
+      python-pkgs.pyyaml
+    ]))
+    rebar3
+    ruby
+    rustup
 
     # Language Tools
+    bashly
     hugo
     revive
+    shellcheck
+    shfmt
   ];
 
   # basic configuration of git, please change to your own

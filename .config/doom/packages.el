@@ -5,7 +5,6 @@
 ;; on the command line, then restart Emacs for the changes to take effect -- or
 ;; use 'M-x doom/reload'.
 (package! asdf :recipe (:host github :repo "tabfugnic/asdf.el" :files ("asdf.el")))
-(package! copilot :recipe (:host github :repo "jart/emacs-copilot" :files ("copilot.el")))
 (package! exec-path-from-shell)
 (package! fennel-mode :recipe (:host gitlab :repo "technomancy/fennel-mode" :files ("fennel-mode.el")))
 (package! org-present)
