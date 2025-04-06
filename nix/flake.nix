@@ -1,4 +1,4 @@
-# Initiated from https://github.com/sindrip/dotfiles/blob/main/nix/flake.nix
+# Initialized from https://github.com/sindrip/dotfiles/blob/main/nix/flake.nix
 {
   description = "Nix home profile";
 
@@ -32,7 +32,7 @@
       homeConfigurations = {
         besam = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./home.nix ];
+          modules = [ ./hosts/niflheim.nix ];
         };
       };
     };

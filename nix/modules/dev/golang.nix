@@ -12,7 +12,7 @@ in {
   config = mkMerge [
     (mkIf cfg.enable {
       home.packages = with pkgs; [
-        go_1_21
+        go_1_24
         (mkIf cfg.hugo.enable hugo)
         (mkIf cfg.tooling.enable revive)
       ];
