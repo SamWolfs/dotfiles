@@ -49,15 +49,15 @@
 (setenv "GCM_CREDENTIAL_STORE" "gpg")
 
 (add-hook 'org-present-mode-hook (lambda ()
-                        (setq-local face-remapping-alist '((default (:height 1.5) variable-pitch)
-                                (header-line (:height 4.5) variable-pitch)
-                                (org-document-title (:height 1.75) org-document-title)
-                                (org-code (:height 1.55) org-code)
-                                (org-verbatim (:height 1.55) org-verbatim)
-                                (org-block (:height 1.25) org-block)
-                                (org-block-begin-line (:height 0.7) org-block)))
-                        (setq header-line-format " ")
-                        (org-display-inline-images)))
+                                  (setq-local face-remapping-alist '((default (:height 1.5) variable-pitch)
+                                                                     (header-line (:height 4.5) variable-pitch)
+                                                                     (org-document-title (:height 1.75) org-document-title)
+                                                                     (org-code (:height 1.55) org-code)
+                                                                     (org-verbatim (:height 1.55) org-verbatim)
+                                                                     (org-block (:height 1.25) org-block)
+                                                                     (org-block-begin-line (:height 0.7) org-block)))
+                                  (setq header-line-format " ")
+                                  (org-display-inline-images)))
 
 (add-hook 'org-present-mode-quit-hook (lambda ()
                                         (setq-local face-remapping-alist '((default variable-pitch default)))
@@ -91,5 +91,7 @@
     (modify-syntax-entry ?_ "w" table)
     (with-syntax-table table
       ad-do-it)))
+
+(set-popup-rule! "*eww*" :ignore t)
 
 (load-file "~/.config/doom/secret.el")

@@ -4,6 +4,7 @@
 ;; To install a package with Doom you must declare them here and run 'doom sync'
 ;; on the command line, then restart Emacs for the changes to take effect -- or
 ;; use 'M-x doom/reload'.
+(package! aidermacs :recipe (:host github :repo "MatthewZMD/aidermacs"))
 (package! asdf :recipe (:host github :repo "tabfugnic/asdf.el" :files ("asdf.el")))
 (package! exec-path-from-shell)
 (package! fennel-mode :recipe (:host gitlab :repo "technomancy/fennel-mode" :files ("fennel-mode.el")))
