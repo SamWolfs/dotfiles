@@ -1,0 +1,16 @@
+/**
+ *
+ * Author : Sam Wolfs
+ * Github : @SamWolfs
+ *
+ * Colors
+ **/
+
+* {
+    background:     #24273AFF;
+    background-alt: #24273AFF;
+    foreground:     #CAD3F5FF;
+    selected:       #ED8796FF;
+    active:         #8AADf4FF;
+    urgent:         #6E738DFF;
+}

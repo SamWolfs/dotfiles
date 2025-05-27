@@ -1,0 +1,67 @@
+repositories:
+  - name: ASIST Knowledge Center
+    url: https://github.com/SamWolfs/asist-knowledge-center
+    tags: SamWolfs/asist-knowledge-center
+  - name: cs50g
+    url: https://github.com/SamWolfs/cs50g
+    tags: SamWolfs/cs50g
+  - name: Dotfiles
+    url: https://github.com/SamWolfs/dotfiles
+    tags: SamWolfs/dotfiles
+  - name: Empire TCG
+    url: https://github.com/SamWolfs/empire-tcg
+    tags: SamWolfs/empire-tcg
+  - name: go-jsoncanvas
+    url: https://github.com/SamWolfs/go-jsoncanvas
+    tags: SamWolfs/go-jsoncanvas
+  - name: Izanami
+    url: https://github.com/SamWolfs/izanami
+    tags: SamWolfs/izanami
+  - name: Learns
+    url: https://github.com/SamWolfs/learns
+    tags: SamWolfs/learns
+  - name: LMR Man
+    url: https://github.com/SamWolfs/LMR_Man
+    tags: SamWolfs/LMR_Man
+  - name: LoFi Rofi
+    url: https://github.com/SamWolfs/lofi-rofi
+    tags: SamWolfs/lofi-rofi
+  - name: Maybe
+    url: https://github.com/SamWolfs/maybe
+    tags: SamWolfs/maybe
+  - name: ob-jsonnet
+    url: https://github.com/SamWolfs/ob-jsonnet
+    tags: SamWolfs/ob-jsonnet
+  - name: Orgfiles
+    url: https://github.com/SamWolfs/orgfiles
+    tags: SamWolfs/orgfiles
+  - name: Pandoc Scripts
+    url: https://github.com/SamWolfs/pandoc-scripts
+    tags: SamWolfs/pandoc-scripts
+  - name: Pass
+    url: https://github.com/SamWolfs/pass
+    tags: SamWolfs/pass
+  - name: Protocol Examples
+    url: https://github.com/SamWolfs/protocol-examples
+    tags: SamWolfs/protocol-examples
+  - name: Resume
+    url: https://github.com/SamWolfs/resume
+    tags: SamWolfs/resume
+  - name: Roamfiles
+    url: https://github.com/SamWolfs/roamfiles
+    tags: SamWolfs/roamfiles
+  - name: Takoneko
+    url: https://github.com/SamWolfs/takoneko
+    tags: SamWolfs/takoneko
+  - name: Tengoku
+    url: https://github.com/SamWolfs/tengoku
+    tags: SamWolfs/tengoku
+  - name: toolbox
+    url: https://github.com/SamWolfs/toolbox
+    tags: SamWolfs/toolbox
+  - name: Yomi
+    url: https://github.com/SamWolfs/yomi
+    tags: SamWolfs/yomi
+  - name: Zhangyu Mao
+    url: https://github.com/SamWolfs/zhangyu-mao
+    tags: SamWolfs/zhangyu-mao
