@@ -24,7 +24,7 @@ in
     };
 
     home.sessionVariables = {
-      DOOM = "$HOME/.config/emacs/bin";
+      DOOM = "${config.home.configDir}/emacs/bin";
       EDITOR = "emacs";
     };
 

@@ -58,13 +58,13 @@ in
     # httptoolkit
     # spotify
     # vlc
-    wakatime
+    wakatime-cli
     xclip
     xdg-ninja
 
     # Languages
     luajit
-    nixfmt-rfc-style
+    nixfmt
     # (python3.withPackages
     #   (python-pkgs: [ python-pkgs.python-dotenv python-pkgs.pyyaml python-pkgs.google-generativeai python-pkgs.google ]))
     rustup

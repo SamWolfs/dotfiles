@@ -74,10 +74,15 @@ in
         update-profile = "home-manager switch --flake $HOME/dev/workspaces/nix/dotfiles#$USER";
         pls = "please";
         please = "sudo $(fc -ln -1)";
+        shutdown = "sudo shutdown now";
+        restart = "sudo restart now";
       };
+
+      initExtra = builtins.readFile ../../config/zsh/.zshrc;
     };
 
     home.sessionVariables = {
+      EDITOR = "emacs";
       LANG = "en_US.UTF-8";
       LOCAL = "$HOME/.local/bin";
       ZDOTDIR = "${config.home.configDir}/zsh";
