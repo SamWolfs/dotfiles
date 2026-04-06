@@ -1,4 +1,4 @@
-{ self, lib, pkgs, ... }:
+{ self, lib, pkgs, home-manager, ... }:
 
 let
   inherit (builtins) mapAttrs intersectAttrs functionArgs getEnv fromJSON;
@@ -8,7 +8,7 @@ let
   inherit (attrs) attrsToList mergeAttrs';
   inherit (modules) mapModules;
   attrs   = import ./attrs.nix   { inherit lib; };
-  modules = import ./modules.nix { inherit lib attrs; };
+  modules = import ./modules.nix { inherit lib attrs home-manager; };
 
   /* Given an attrset of nix module partials, returns it as a sorted list of
      NameValuePairs according to its callPackage-style dependencies from the
@@ -43,7 +43,7 @@ let
   };
   # FIXME: Lexicographical loading can cause race conditions. Sort them?
   libModules = sortLibsByDeps (mapModules ./. import);
-  libs = foldl libConcat { inherit lib pkgs; self = libs; } (attrsToList libModules);
+  libs = foldl libConcat { inherit lib pkgs home-manager; self = libs; } (attrsToList libModules);
 in
   # The flattened tree is appended to make the namespaced endpoints optional,
   # and because namespaces are useful for inherit'ed let-bindings. In other

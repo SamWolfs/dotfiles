@@ -1,4 +1,4 @@
-{ lib, attrs }:
+{ lib, attrs, home-manager }:
 
 let
   inherit (builtins) attrValues readDir pathExists concatLists;
@@ -59,10 +59,15 @@ in rec {
 
   # dir :: attrs
   #
-  # TODO
-  mapHosts = dir:
-    mapModules dir (path: {
-      inherit path;
-      config = import path;
-    });
+  # mapHosts takes a directory and an attribute set (containing pkgs and lib)
+  # and maps all .nix files in that directory to a home-manager configuration.
+  mapHosts = dir: attrs:
+    mapModules dir (path:
+      home-manager.lib.homeManagerConfiguration {
+        inherit (attrs) pkgs;
+        modules = [ path ];
+        extraSpecialArgs = {
+          extendedLib = attrs.lib;
+        };
+      });
 }

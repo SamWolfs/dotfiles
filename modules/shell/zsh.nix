@@ -70,7 +70,7 @@ in
         lS = "ls -1FSsh";
         lart = "ls -1Fcart";
         lrt = "ls -1Fcrt";
-        update-profile = "home-manager switch --flake $HOME/.dotfiles#$USER";
+        update-profile = "home-manager switch --flake $HOME/.dotfiles#$HOST";
         pls = "please";
         please = "sudo $(fc -ln -1)";
         shutdown = "sudo shutdown now";

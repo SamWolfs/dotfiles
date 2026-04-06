@@ -1,0 +1,9 @@
+#+title: Dotfiles
+
+** Bootstrap
+
+Run the following script, which will install the repository in your ~$HOME/.dotfiles~ directory.
+
+#+begin_src bash
+nix run github:SamWolfs/dotfiles#bootstrap
+#+end_src

@@ -12,7 +12,7 @@
   outputs = { self, nixpkgs, flake-utils, home-manager, ... }@inputs:
     let
       args = {
-        inherit self;
+        inherit self home-manager;
         inherit (nixpkgs) lib;
         pkgs = nixpkgs.legacyPackages.${system};
       };
@@ -25,25 +25,25 @@
 
       packages.bootstrap = pkgs.writeShellApplication {
         name = "bootstrap";
-        runtimeInputs = [ pkgs.git ];
-        # FIXME: Not a bare repo anymore!
+        runtimeInputs = [ pkgs.git pkgs.nix ];
         text = ''
-          echo "Initializing dotfiles repo: $HOME/.cfg/" && \
-          git clone --bare https://github.com/SamWolfs/dotfiles-v2.git $HOME/.cfg/ && \
-          git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout && \
-          cd $HOME/nix && \
-          nix profile install
+          DEST="$HOME/.dotfiles"
+          if [ ! -d "$DEST" ]; then
+            echo "Cloning dotfiles repo to $DEST..."
+            git clone https://github.com/SamWolfs/dotfiles.git "$DEST"
+          else
+            echo "Dotfiles already exist at $DEST, skipping clone."
+          fi
+
+          cd "$DEST"
+          echo "Applying home-manager configuration..."
+          # Use nix run to ensure home-manager is available even on fresh installs
+          nix run nixpkgs#home-manager -- switch --flake ".#$HOST"
         '';
       };
 
-      homeConfigurations = {
-        besam = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./hosts/niflheim.nix ];
-          extraSpecialArgs = {
-            extendedLib = lib;
-          };
-        };
+      homeConfigurations = lib.mapHosts ./hosts {
+        inherit pkgs lib;
       };
     };
 }
