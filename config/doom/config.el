@@ -16,7 +16,8 @@
 (setq display-line-numbers-type 'relative
       scroll-margin 8)
 
-(setq projectile-project-search-path '(("~/dev/workspaces/" . 2)))
+(setq projectile-project-search-path '(("~/dev/workspaces/" . 2)
+                                       ("~/.dotfiles/" . 1)))
 
 (require 'asdf)
 

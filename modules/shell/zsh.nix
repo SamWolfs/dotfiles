@@ -35,8 +35,7 @@ in
 
     programs.zsh = {
       enable = true;
-      # TODO: Is there another way that uses XDG_CONFIG?
-      dotDir = ".config/zsh";
+      dotDir = "${config.home.configDir}/zsh";
       enableCompletion = true;
       # Again. I configure the prompt myself, so disable the default.
       # promptInit = "";
@@ -71,14 +70,14 @@ in
         lS = "ls -1FSsh";
         lart = "ls -1Fcart";
         lrt = "ls -1Fcrt";
-        update-profile = "home-manager switch --flake $HOME/dev/workspaces/nix/dotfiles#$USER";
+        update-profile = "home-manager switch --flake $HOME/.dotfiles#$USER";
         pls = "please";
         please = "sudo $(fc -ln -1)";
         shutdown = "sudo shutdown now";
         restart = "sudo restart now";
       };
 
-      initExtra = builtins.readFile ../../config/zsh/.zshrc;
+      initContent = builtins.readFile ../../config/zsh/.zshrc;
     };
 
     home.sessionVariables = {
