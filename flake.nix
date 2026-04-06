@@ -26,6 +26,7 @@
       packages.bootstrap = pkgs.writeShellApplication {
         name = "bootstrap";
         runtimeInputs = [ pkgs.git ];
+        # FIXME: Not a bare repo anymore!
         text = ''
           echo "Initializing dotfiles repo: $HOME/.cfg/" && \
           git clone --bare https://github.com/SamWolfs/dotfiles-v2.git $HOME/.cfg/ && \

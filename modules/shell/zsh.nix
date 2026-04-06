@@ -71,7 +71,7 @@ in
         lS = "ls -1FSsh";
         lart = "ls -1Fcart";
         lrt = "ls -1Fcrt";
-        update-profile = "home-manager switch --flake $HOME/nix#$USER";
+        update-profile = "home-manager switch --flake $HOME/dev/workspaces/nix/dotfiles#$USER";
         pls = "please";
         please = "sudo $(fc -ln -1)";
       };

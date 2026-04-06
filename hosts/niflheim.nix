@@ -28,6 +28,7 @@ in
   nixpkgs.config.allowUnfreePredicate = _: true;
 
   home.packages = with pkgs; [
+    calibre
     maelstrom-clj
 
     # Core
@@ -39,8 +40,8 @@ in
     git
     google-cloud-sdk
     imagemagick
-    jujutsu
-    obsidian
+    # jujutsu
+    # obsidian
     pass
     protobuf
     tree
@@ -49,22 +50,23 @@ in
     pavucontrol
 
     # Misc
-    discord
+    # discord
     iosevka
     nerd-fonts.jetbrains-mono
-    ffmpeg
-    gimp
-    spotify
-    vlc
+    # ffmpeg
+    # gimp
+    # httptoolkit
+    # spotify
+    # vlc
     wakatime
     xclip
+    xdg-ninja
 
     # Languages
     luajit
     nixfmt-rfc-style
     # (python3.withPackages
     #   (python-pkgs: [ python-pkgs.python-dotenv python-pkgs.pyyaml python-pkgs.google-generativeai python-pkgs.google ]))
-    ruby
     rustup
 
     # gamedev
@@ -72,6 +74,8 @@ in
 
     # Language Tools
     bashly
+    bruno
+    gemini-cli
     go-task
 
     # ssl
@@ -101,7 +105,10 @@ in
     shell.enable = true;
   };
 
-  modules.editors.emacs.enable = true;
+  modules.editors = {
+    cursor.enable = true;
+    emacs.enable = true;
+  };
 
   modules.services = {
     dunst.enable = true;

@@ -19,6 +19,7 @@ in
   config = mkMerge [
     (mkIf cfg.enable {
       home.packages = with pkgs; [
+        bun
         nodejs
         (mkIf cfg.yarn.enable yarn)
       ];

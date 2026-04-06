@@ -53,6 +53,7 @@ alias pls=please
 alias please='sudo $(fc -ln -1)'
 
 source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+eval "$(~/.local/bin/mise activate)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
