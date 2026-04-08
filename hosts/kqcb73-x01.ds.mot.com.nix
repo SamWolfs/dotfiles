@@ -22,15 +22,12 @@ in
     ../modules/themes
   ];
 
-  home.username = "besam";
-  home.homeDirectory = "/home/besam";
+  home.username = "kqcb73";
+  home.homeDirectory = "/home/kqcb73";
 
   nixpkgs.config.allowUnfreePredicate = _: true;
 
   home.packages = with pkgs; [
-    calibre
-    maelstrom-clj
-
     # Core
     azure-cli
     devenv
@@ -130,7 +127,7 @@ in
     zsh.enable = true;
   };
 
-  modules.theme.active = "gruvbox";
+  modules.theme.active = "catppuccin-latte";
 
   fonts.fontconfig.enable = true;
 

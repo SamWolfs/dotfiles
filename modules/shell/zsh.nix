@@ -20,6 +20,7 @@ in
       at
       bat # a better cat
       bc
+      devenv
       dust # a better du
       eza # a better ls
       fasd

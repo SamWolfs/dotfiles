@@ -91,20 +91,13 @@
 
 (setq evil-want-Y-yank-to-eol t)
 ;; same ciw functionality as vim
-(defadvice evil-inner-word (around underscore-as-word activate)
+(define-advice evil-inner-word (around underscore-as-word activate)
   (let ((table (copy-syntax-table (syntax-table))))
     (modify-syntax-entry ?_ "w" table)
     (with-syntax-table table
       ad-do-it)))
 
 (set-popup-rule! "*eww*" :ignore t)
-
-(add-hook 'aidermacs-before-run-backend-hook
-          (lambda ()
-            (setenv "GEMINI_API_KEY" (password-store-get "aistudio.google.com/samwolfs/token"))))
-
-(setq aidermacs-default-model "gemini-2.5-pro-exp-03-25")
-(setq aidermacs-weak-model "gemini-2.0-flash")
 
 (setq wakatime-api-key (password-store-get "wakatime.com/samwolfs/token"))
 (global-wakatime-mode)
