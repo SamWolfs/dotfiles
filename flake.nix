@@ -20,26 +20,25 @@
       pkgs = nixpkgs.legacyPackages.${system};
       lib = import ./lib args;
     in {
-      environment.shells = with pkgs; [ zsh ];
-      users.defaultUserShell = pkgs.zsh;
+      packages.${system} = {
+        bootstrap = pkgs.writeShellApplication {
+          name = "bootstrap";
+          runtimeInputs = [ pkgs.git pkgs.nix ];
+          text = ''
+            DEST="$HOME/.dotfiles"
+            if [ ! -d "$DEST" ]; then
+              echo "Cloning dotfiles repo to $DEST..."
+              git clone https://github.com/SamWolfs/dotfiles.git "$DEST"
+            else
+              echo "Dotfiles already exist at $DEST, skipping clone."
+            fi
 
-      packages.bootstrap = pkgs.writeShellApplication {
-        name = "bootstrap";
-        runtimeInputs = [ pkgs.git pkgs.nix ];
-        text = ''
-          DEST="$HOME/.dotfiles"
-          if [ ! -d "$DEST" ]; then
-            echo "Cloning dotfiles repo to $DEST..."
-            git clone https://github.com/SamWolfs/dotfiles.git "$DEST"
-          else
-            echo "Dotfiles already exist at $DEST, skipping clone."
-          fi
-
-          cd "$DEST"
-          echo "Applying home-manager configuration..."
-          # Use nix run to ensure home-manager is available even on fresh installs
-          nix run nixpkgs#home-manager -- switch --flake ".#$HOST"
-        '';
+            cd "$DEST"
+            echo "Applying home-manager configuration..."
+            # Use nix run to ensure home-manager is available even on fresh installs
+            nix run nixpkgs#home-manager -- switch --flake ".#$HOST"
+          '';
+        };
       };
 
       homeConfigurations = lib.mapHosts ./hosts {
