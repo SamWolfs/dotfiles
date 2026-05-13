@@ -1,26 +1,28 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-(setq user-full-name "Sam Wolfs"
-      user-mail-address "be.samwolfs@gmail.com")
-
+;; Per-host identity from Home Manager
+(load-file "~/.config/doom/user.el")
+;; Per-host theme from Home Manager
 (load-file "~/.config/doom/theme.el")
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono"))
 
-(setq org-directory "~/dev/org/")
-(setq org-roam-dailies-directory "journal/")
-
-(setq org-roam-dailies-capture-template
-      '(("d" "default" entry "* %<%k:%M:%S %z>: %?"
+(setq org-directory "~/dev/org/"
+      org-roam-dailies-directory "journal/")
+      org-roam-dailies-capture-template
+        '(("d" "default" entry "* %<%k:%M:%S %z>: %?"
          :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
 
 (setq display-line-numbers-type 'relative
       scroll-margin 8)
 
 (setq projectile-project-search-path '(("~/dev/workspaces/" . 2)
+                                       ("~/personal/workspaces/" . 2)
                                        ("~/.dotfiles/" . 1)))
 
-(require 'asdf)
+(after! projectile
+  (add-to-list 'projectile-project-root-files-bottom-up ".project"))
 
+(require 'ob-elixir)
 (require 'ob-typescript)
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
