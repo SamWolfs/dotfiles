@@ -4,13 +4,16 @@
 (load-file "~/.config/doom/user.el")
 ;; Per-host theme from Home Manager
 (load-file "~/.config/doom/theme.el")
+;; Per-host config from Home Manager
+(when (file-exists-p "~/.config/doom/host.el")
+  (load-file "~/.config/doom/host.el"))
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono"))
 
-(setq org-directory "~/dev/org/"
-      org-roam-dailies-directory "journal/")
-      org-roam-dailies-capture-template
-        '(("d" "default" entry "* %<%k:%M:%S %z>: %?"
-         :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
+;; (setq org-directory "~/dev/org/"
+;;       org-roam-dailies-directory "journal/"
+;;       org-roam-dailies-capture-template
+;;         '(("d" "default" entry "* %<%k:%M:%S %z>: %?"
+;;          :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
 
 (setq display-line-numbers-type 'relative
       scroll-margin 8)
@@ -93,7 +96,7 @@
 
 (setq evil-want-Y-yank-to-eol t)
 ;; same ciw functionality as vim
-(define-advice evil-inner-word (around underscore-as-word activate)
+(defadvice evil-inner-word (around underscore-as-word activate)
   (let ((table (copy-syntax-table (syntax-table))))
     (modify-syntax-entry ?_ "w" table)
     (with-syntax-table table

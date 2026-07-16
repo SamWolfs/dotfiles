@@ -16,7 +16,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ ];
+    home.packages = with pkgs; [];
 
     home.configFile."i3" = {
       source = ../../config/i3;

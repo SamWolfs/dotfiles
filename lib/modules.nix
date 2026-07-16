@@ -59,13 +59,14 @@ in rec {
 
   # dir :: attrs
   #
-  # mapHosts takes a directory and an attribute set (containing pkgs and lib)
-  # and maps all .nix files in that directory to a home-manager configuration.
+  # mapHosts takes a directory and an attribute set (containing pkgs, lib and
+  # optionally extraModules) and maps all .nix files in that directory to a
+  # home-manager configuration.
   mapHosts = dir: attrs:
     mapModules dir (path:
       home-manager.lib.homeManagerConfiguration {
         inherit (attrs) pkgs;
-        modules = [ path ];
+        modules = [ path ] ++ (attrs.extraModules or [ ]);
         extraSpecialArgs = {
           extendedLib = attrs.lib;
         };

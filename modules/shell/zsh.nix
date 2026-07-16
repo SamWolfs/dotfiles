@@ -41,12 +41,16 @@ in
       # Again. I configure the prompt myself, so disable the default.
       # promptInit = "";
       # Respect XDG please!
-      history.path = "${config.home.stateDir}/zsh/history";
+      history = {
+        path = "${config.home.stateDir}/zsh/history";
+        ignoreSpace = true;
+        saveNoDups = true;
+      };
       # Implement these manually (and with caching)
       # enableLsColors = false;
       oh-my-zsh = {
         enable = true;
-        custom = "$XDG_CONFIG_HOME/oh-my-zsh";
+        custom = "${config.home.configDir}/oh-my-zsh";
         plugins = [
           "direnv"
           "git"
@@ -83,6 +87,8 @@ in
 
     home.sessionVariables = {
       EDITOR = "emacs";
+      BROWSER = "google-chrome-stable";
+      GH_BROWSER = ",gh-browser";
       LANG = "en_US.UTF-8";
       LOCAL = "$HOME/.local/bin";
       ZDOTDIR = "${config.home.configDir}/zsh";

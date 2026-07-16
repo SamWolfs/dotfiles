@@ -10,7 +10,7 @@ in {
   config = mkMerge [
     (mkIf cfg.enable {
       home.packages = with pkgs; [
-        beam.packages.erlang_27.elixir_1_17
+        beam.packages.erlang_28.elixir_1_18
         rebar3
       ];
 

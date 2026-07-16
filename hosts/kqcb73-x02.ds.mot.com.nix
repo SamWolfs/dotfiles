@@ -17,6 +17,7 @@ in
     ../modules/desktop
     ../modules/editors
     ../modules/dev
+    ../modules/hosts
     ../modules/services
     ../modules/shell
     ../modules/themes
@@ -38,10 +39,18 @@ in
     google-cloud-sdk
     imagemagick
     # jujutsu
-    obsidian
+    (symlinkJoin {
+      name = "obsidian";
+      paths = [ obsidian ];
+      buildInputs = [ makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/obsidian \
+          --add-flags "--no-sandbox"
+      '';
+    })
     pass
     protobuf
-    # tmux
+    rtk
     tree
     totp-cli
     xst
@@ -50,6 +59,7 @@ in
 
     # Misc
     iosevka
+    ffmpeg
     nerd-fonts.jetbrains-mono
     haskellPackages.greenclip
     # ffmpeg
@@ -87,8 +97,8 @@ in
     semgrep
 
     # ssl
-    srtp
-    openssl
+    # srtp
+    # openssl
   ];
 
   modules.desktop = {
@@ -130,16 +140,19 @@ in
 
   modules.shell = {
     direnv.enable = true;
+    tmux.enable = true;
     zsh.enable = true;
   };
 
-  modules.theme.active = "catppuccin-latte";
+  modules.host.name = "kqcb73-x02.ds.mot.com";
+  modules.theme.active = "gruvbox";
 
   fonts.fontconfig.enable = true;
 
   home.stateVersion = "23.11";
 
   home.sessionVariables = {
+    AWS_PROFILE = "ClaudeCodeLP";
     # FIXME: Uncommenting breaks Nix
     # LIBCLANG_PATH = "${pkgs.libclang.lib}/lib";
     # LD_LIBRARY_PATH = lib.makeLibraryPath [

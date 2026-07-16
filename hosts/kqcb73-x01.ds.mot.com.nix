@@ -17,6 +17,7 @@ in
     ../modules/desktop
     ../modules/editors
     ../modules/dev
+    ../modules/hosts
     ../modules/services
     ../modules/shell
     ../modules/themes
@@ -38,7 +39,15 @@ in
     google-cloud-sdk
     imagemagick
     # jujutsu
-    obsidian
+    (symlinkJoin {
+      name = "obsidian";
+      paths = [ obsidian ];
+      buildInputs = [ makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/obsidian \
+          --add-flags "--no-sandbox"
+      '';
+    })
     pass
     protobuf
     # tmux
@@ -87,8 +96,8 @@ in
     semgrep
 
     # ssl
-    srtp
-    openssl
+    # srtp
+    # openssl
   ];
 
   modules.desktop = {
@@ -114,7 +123,6 @@ in
   };
 
   modules.editors = {
-    cursor.enable = true;
     emacs.enable = true;
   };
 
@@ -127,6 +135,7 @@ in
     zsh.enable = true;
   };
 
+  modules.host.name = "kqcb73-x01.ds.mot.com";
   modules.theme.active = "catppuccin-latte";
 
   fonts.fontconfig.enable = true;

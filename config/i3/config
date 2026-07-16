@@ -9,7 +9,8 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+# exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec --no-startup-id dbus-update-activation-environment --systemd --all
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -92,7 +93,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -111,15 +112,15 @@ bindsym $mod+a focus parent
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
-set $ws2 "2"
+set $ws2 "2"
 set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
+set $ws4 "4"
+set $ws5 "5󰭹"
+set $ws6 "6"
+set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -145,12 +146,12 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-assign [class="kitty"] $ws1
-assign [class="Firefox"] $ws2
-assign [class="Emacs"] $ws3
-assign [class="discord"] $ws5
-assign [class="Spotify"] $ws9
-assign [class="Steam"] $ws10
+# assign [class="kitty"] $ws1
+# assign [class="Firefox"] $ws2
+# assign [class="Emacs"] $ws3
+# assign [class="discord"] $ws5
+# assign [class="Spotify"] $ws9
+# assign [class="Steam"] $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -187,6 +188,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 include $HOME/.config/i3/theme.conf
+include $HOME/.config/i3/host.conf
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
@@ -196,11 +198,11 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 bindsym XF86TouchpadToggle exec /home/sam/.config/i3/toggletouchpad.sh # toggle touchpad
 
 # Screen lock
-bindsym $mod+shift+period exec $HOME/.config/i3/lock -i $HOME/Pictures/clair-obscur-blurred.jpeg
+bindsym $mod+shift+period exec $HOME/.config/i3/lock -i $HOME/Pictures/nge-magi_blurred.jpg
 bindsym $mod+shift+Escape exec systemctl suspend
 
 # Background Image
-exec_always feh --bg-scale $HOME/Pictures/clair-obscur.jpeg
+exec_always feh --bg-scale $HOME/Pictures/nge-magi.jpg
 
 # Menu launcher
 bindsym $mod+d exec $HOME/.config/rofi/bin/appmenu.sh
@@ -210,7 +212,7 @@ bindsym $mod+g exec $HOME/.config/rofi/bin/lofimenu.sh
 bindsym --release $mod+Shift+equal exec $HOME/.config/i3/capture
 
 # Transparency
-exec_always --no-startup-id picom 
+exec_always --no-startup-id picom --backend xrender --config $HOME/.config/picom.conf
 
 # Set keyboard layout
 exec_always setxkbmap -layout us -option caps:escape

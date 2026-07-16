@@ -1,5 +1,14 @@
 #+title: Dotfiles
 
+** Not managed by Nix
+
+- [[https://docs.determinate.systems/determinate-nix/][Determinate Nix installation]]
+- [[https://i3wm.org/docs/repositories.html][i3 installation]]
+- [[https://github.com/vivien/i3blocks][i3blocks installation]]
+- [[https://github.com/doomemacs/doomemacs][DoomEmacs installation]]
+- ~sudo apt install cmake libtool libtool-bin~ for vterm
+- Docker, but maybe I should be using Podman
+
 ** Bootstrap
 
 Run the following script, which will install the repository in your ~$HOME/.dotfiles~ directory.

@@ -26,10 +26,8 @@ in
         recursive = true;
       };
 
-      "lofi-rofi" = {
-        source = ../../../config/lofi-rofi;
-        recursive = true;
-      };
+      "lofi-rofi/config".source = ../../../config/lofi-rofi/config;
+      "lofi-rofi/metadata".source = ../../../config/lofi-rofi/metadata;
     };
   };
 }

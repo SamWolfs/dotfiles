@@ -12,7 +12,10 @@ in {
     (mkIf cfg.enable {
       home.packages = with pkgs; [
         jq
-        (mkIf cfg.yaml.enable yq-go)
+      ] ++ optionals cfg.yaml.enable [
+        yamlfmt
+        yamllint
+        yq-go
       ];
     })
   ];
