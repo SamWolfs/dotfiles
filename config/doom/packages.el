@@ -21,4 +21,4 @@
 (package! ox-reveal)
 (package! protobuf-mode)
 (package! typescript-mode)
-(package! wakatime-mode)
+;; (package! wakatime-mode)

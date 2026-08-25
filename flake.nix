@@ -7,9 +7,12 @@
     flake-utils.url = "github:numtide/flake-utils";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    peon-ping.url = "github:PeonPing/peon-ping";
+    peon-ping.inputs.nixpkgs.follows = "nixpkgs";
+    herdr.url = "github:herdrdev/herdr/v0.8.0";
   };
 
-  outputs = { self, nixpkgs, flake-utils, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, flake-utils, home-manager, peon-ping, herdr, ... }@inputs:
     let
       args = {
         inherit self home-manager;
@@ -17,7 +20,17 @@
         pkgs = nixpkgs.legacyPackages.${system};
       };
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      # Expose flake-input packages that aren't in nixpkgs (e.g. peon-ping) as
+      # `pkgs.<name>` so modules can refer to them like any other package.
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          (final: prev: {
+            peon-ping = peon-ping.packages.${system}.default;
+            herdr = herdr.packages.${system}.default;
+          })
+        ];
+      };
       lib = import ./lib args;
     in {
       packages.${system} = {
@@ -43,6 +56,7 @@
 
       homeConfigurations = lib.mapHosts ./hosts {
         inherit pkgs lib;
+        extraModules = [ peon-ping.homeManagerModules.default ];
       };
     };
 }

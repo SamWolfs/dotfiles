@@ -52,6 +52,10 @@
     :init
     (add-to-list 'exec-path "~/dev/tools/elixir-ls"))
 
+(use-package dockerfile-mode
+  :ensure t
+  :mode "\\.Dockerfile\\'")
+
 (with-eval-after-load 'lsp-mode
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.direnv\\'")
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.devenv\\'"))
@@ -77,10 +81,7 @@
 
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 
-(map! :after elixir-mode
-      :map elixir-mode-map
-      :localleader
-      "f" #'elixir-format)
+(load-file "~/.config/doom/plugins/mix.el")
 
 (map! :after go-mode
       :localleader

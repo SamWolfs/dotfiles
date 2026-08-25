@@ -15,7 +15,7 @@ in {
       ];
 
       home.sessionVariables = {
-        ERL_AFLAGS = "-kernel shell-history enabled";
+        ERL_AFLAGS = "-kernel shell_history enabled";
       };
     })
   ];

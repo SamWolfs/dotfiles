@@ -90,7 +90,6 @@ in
     bazel-buildtools
     clang-tools
     claude-code
-    gemini-cli
     httptoolkit
     markdownlint-cli
     openapi-generator-cli

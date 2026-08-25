@@ -5,8 +5,6 @@ export PATH="$NPM_BIN:$HOME/.mix/escripts:$GOPATH/bin:$LOCAL:$DOOM:$PATH"
 
 export GCM_CREDENTIAL_STORE="gpg"
 
-export ERL_AFLAGS="-kernel shell_history enabled"
-
 export LANG=en_US.UTF-8
 
 source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
