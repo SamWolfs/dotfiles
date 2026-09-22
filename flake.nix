@@ -1,4 +1,3 @@
-# Initialized from https://github.com/sindrip/dotfiles/blob/main/nix/flake.nix
 {
   description = "Nix home profile";
 
@@ -14,25 +13,35 @@
 
   outputs = { self, nixpkgs, flake-utils, home-manager, peon-ping, herdr, ... }@inputs:
     let
-      args = {
-        inherit self home-manager;
-        inherit (nixpkgs) lib;
-        pkgs = nixpkgs.legacyPackages.${system};
-      };
       system = "x86_64-linux";
-      # Expose flake-input packages that aren't in nixpkgs (e.g. peon-ping) as
-      # `pkgs.<name>` so modules can refer to them like any other package.
+      extraPackagesOverlay = final: prev: {
+        peon-ping = peon-ping.packages.${system}.default;
+        herdr = herdr.packages.${system}.default;
+      };
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [
-          (final: prev: {
-            peon-ping = peon-ping.packages.${system}.default;
-            herdr = herdr.packages.${system}.default;
-          })
-        ];
+        overlays = [ extraPackagesOverlay ];
+      };
+      args = {
+        inherit self home-manager pkgs;
+        inherit (nixpkgs) lib;
       };
       lib = import ./lib args;
-    in {
+      homeModules = {
+        home     = ./modules/home.nix;
+        desktop  = ./modules/desktop;
+        editors  = ./modules/editors;
+        dev      = ./modules/dev;
+        services = ./modules/services;
+        shell    = ./modules/shell;
+        themes   = ./modules/themes;
+        peonPing = peon-ping.homeManagerModules.default;
+      };
+    in
+    {
+      inherit lib homeModules;
+      overlays.default = extraPackagesOverlay;
+
       packages.${system} = {
         bootstrap = pkgs.writeShellApplication {
           name = "bootstrap";
