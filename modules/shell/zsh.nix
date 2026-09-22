@@ -23,7 +23,6 @@ in
       devenv
       dust # a better du
       eza # a better ls
-      fasd
       fd
       fzf
       gnumake
