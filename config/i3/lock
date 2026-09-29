@@ -84,7 +84,7 @@ done <<<"`xrandr`"
 
 #Execute ImageMagick:
 eval convert -size ${OUTPUT_IMG_WIDTH}x${OUTPUT_IMG_HEIGHT} 'xc:black' -colorspace sRGB -type TrueColor $OUTPUT_IMG
-eval convert $OUTPUT_IMG $PARAMS $OUTPUT_IMG
+eval convert $OUTPUT_IMG $PARAMS PNG24:$OUTPUT_IMG
 
 #Lock the screen:
 $LOCK_CMD
