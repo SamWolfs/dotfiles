@@ -71,7 +71,7 @@ do
     if ! [ -e $CACHE_IMG ]
     then
 	# Create image for that screensize
-        eval convert '$BKG_IMG' '-resize' '${SCREEN_WIDTH}X${SCREEN_HEIGHT}^' '-gravity' 'Center' '-crop' '${SCREEN_WIDTH}X${SCREEN_HEIGHT}+0+0' '+repage' '$CACHE_IMG'
+        eval magick '$BKG_IMG' '-resize' '${SCREEN_WIDTH}X${SCREEN_HEIGHT}^' '-gravity' 'Center' '-crop' '${SCREEN_WIDTH}X${SCREEN_HEIGHT}+0+0' '+repage' '$CACHE_IMG'
     fi
 
     # Decide size of output image
@@ -83,8 +83,8 @@ do
 done <<<"`xrandr`"
 
 #Execute ImageMagick:
-eval convert -size ${OUTPUT_IMG_WIDTH}x${OUTPUT_IMG_HEIGHT} 'xc:black' -colorspace sRGB -type TrueColor $OUTPUT_IMG
-eval convert $OUTPUT_IMG $PARAMS PNG24:$OUTPUT_IMG
+eval magick -size ${OUTPUT_IMG_WIDTH}x${OUTPUT_IMG_HEIGHT} 'xc:black' -colorspace sRGB -type TrueColor $OUTPUT_IMG
+eval magick $OUTPUT_IMG -colorspace sRGB -type TrueColor $PARAMS PNG24:$OUTPUT_IMG
 
 #Lock the screen:
 $LOCK_CMD
