@@ -6,7 +6,6 @@
 ;; use 'M-x doom/reload'.
 (package! bazel :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))
 (package! catppuccin-theme)
-(package! claude-code-ide :recipe (:host github :repo "manzaltu/claude-code-ide.el"))
 (package! exec-path-from-shell)
 (package! exunit)
 (package! fennel-mode :recipe (:host gitlab :repo "technomancy/fennel-mode" :files ("fennel-mode.el")))
@@ -22,3 +21,8 @@
 (package! protobuf-mode)
 (package! typescript-mode)
 ;; (package! wakatime-mode)
+
+;; agent-shell
+(package! shell-maker)
+(package! acp)
+(package! agent-shell)
